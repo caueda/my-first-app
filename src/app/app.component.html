@@ -1,0 +1,9 @@
+<div class="container">
+    <app-cockpit 
+        (serverCreated)="onServerCreated($event)"
+        (blueprintCreated)="onBlueprintCreated($event)"></app-cockpit>
+    <div class="col-xs-12">
+        <app-server-element [servers]="servers"></app-server-element>
+    </div>
+    <app-rating></app-rating>
+</div>

@@ -1,0 +1,10 @@
+<h1>Resources</h1>
+             
+<div class="card" *ngFor="let server of servers">
+    <div class="card-header">{{server.type}}</div>
+    <div class="card-body">
+        <h5 class="card-title">{{server.name}}</h5>
+        <p class="card-text">{{server.content}}</p>
+    </div>
+</div>
+
