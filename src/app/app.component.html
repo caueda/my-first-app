@@ -1,10 +1,11 @@
 <app-header (pageHeaderEvent)="page = $event"></app-header>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
             <app-recipes *ngIf="page === 'recipe'"></app-recipes>
             <app-shopping-list *ngIf="page !== 'recipe'"></app-shopping-list>
             <hr>
         </div>
     </div>
 </div>
+  
