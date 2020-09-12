@@ -1,5 +1,6 @@
+import { ShoppingListService } from './../shopping-list.service';
 import { element } from 'protractor';
-import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
@@ -11,9 +12,8 @@ export class ShoppingEditComponent implements OnInit {
 
   @ViewChild('name') nameRef: ElementRef;
   @ViewChild('amount') amountRef: ElementRef;
-  @Output() ingredientAddedEvent = new EventEmitter<Ingredient>();
 
-  constructor() { }
+  constructor(private shoppingListService: ShoppingListService) { }
 
   ngOnInit() {
   }
@@ -21,6 +21,6 @@ export class ShoppingEditComponent implements OnInit {
   addIngredient() {
     console.log('button ingredient pressed');
     const ingredient = new Ingredient(this.nameRef.nativeElement.value, this.amountRef.nativeElement.value);
-    this.ingredientAddedEvent.emit(ingredient);
+    this.shoppingListService.addIngredient(ingredient);
   }
 }
