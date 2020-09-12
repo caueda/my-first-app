@@ -1,3 +1,5 @@
+import { UserService } from './users/users.service';
+import { UsersComponent } from './users/users.component';
 import { AppHighlightDirective } from './directives/app-highlight.directive';
 import { DropdownDirective } from './shared/dropdown.directive';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,6 +13,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { AppBetterHighlightDirective } from './directives/app-better-highlight.directive';
+import { ShoppingListService } from './shopping-list/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -24,12 +27,13 @@ import { AppBetterHighlightDirective } from './directives/app-better-highlight.d
     RecipeItemComponent,
     DropdownDirective,
     AppHighlightDirective,
-    AppBetterHighlightDirective
+    AppBetterHighlightDirective,
+    UsersComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [UserService, ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
