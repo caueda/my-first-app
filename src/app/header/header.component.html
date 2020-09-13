@@ -1,10 +1,10 @@
 
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <a href="#" class="navbar-brand">Recipe Book</a>
+        <a href="#" class="navbar-brand" routerLink="/" [routerLinkActiveOptions]="{exact: true}">Recipe Book</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#" (click)="onClick('recipe')">Recipes</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" (click)="onClick('shopping')">Shopping List</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/recipes">Recipes</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/shopping">Shopping List</a></li>
             </ul>
             <ul class="navbar-nav navbar-right">                
                 <li class="nav-item dropdown">                    

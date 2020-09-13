@@ -1,3 +1,5 @@
+import { HomeComponent } from './home/home.component';
+import { AppRouting, AppRoutingModule } from './app-routing.module';
 import { UserService } from './users/users.service';
 import { UsersComponent } from './users/users.component';
 import { AppHighlightDirective } from './directives/app-highlight.directive';
@@ -28,10 +30,12 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     DropdownDirective,
     AppHighlightDirective,
     AppBetterHighlightDirective,
-    UsersComponent
+    UsersComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [UserService, ShoppingListService],
   bootstrap: [AppComponent]
