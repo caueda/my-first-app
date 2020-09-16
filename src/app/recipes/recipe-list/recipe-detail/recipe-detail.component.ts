@@ -10,12 +10,16 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class RecipeDetailComponent implements OnInit {
 
-  @Input() recipeSelected: Recipe;
+  recipeSelected: Recipe;
+  id: number;
 
   constructor(private recipeService: RecipeService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log('recipe', this.recipeSelected);
+    this.activatedRoute.params.subscribe((param: Params) => {
+      this.id = +param['id'];
+      this.recipeSelected = this.recipeService.getRecipe(this.id);
+    });
   }
 
   onAddToShoppingList() {

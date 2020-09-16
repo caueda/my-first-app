@@ -38,7 +38,7 @@ export class RecipeService {
 
       getRecipe(id: number) {
         const recipe = this.recipes.find((r) => {
-          return r.id = id;
+          return r.id === id;
         });
         return recipe;
       }

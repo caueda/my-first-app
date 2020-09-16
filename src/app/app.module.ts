@@ -1,5 +1,5 @@
 import { HomeComponent } from './home/home.component';
-import { AppRouting, AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { UserService } from './users/users.service';
 import { UsersComponent } from './users/users.component';
 import { AppHighlightDirective } from './directives/app-highlight.directive';
@@ -16,6 +16,8 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { AppBetterHighlightDirective } from './directives/app-better-highlight.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
+import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
     AppHighlightDirective,
     AppBetterHighlightDirective,
     UsersComponent,
-    HomeComponent
+    HomeComponent,
+    RecipeStartComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
