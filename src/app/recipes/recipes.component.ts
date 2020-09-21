@@ -11,19 +11,11 @@ import { Subscription } from 'rxjs';
 })
 export class RecipesComponent implements OnInit, OnDestroy {
 
-  recipeSelected: Recipe;
-  subscription: Subscription;
-
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    this.subscription = this.recipeService.recipeSelected.subscribe((recipe: Recipe) => {
-      console.log('I was notified.');
-      this.recipeSelected = recipe;
-    });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }
