@@ -1,19 +1,27 @@
 <div class="row">
     <div class="col-xl-12">
-        <form>
+        <form (ngSubmit)="addIngredient(f)" #f="ngForm">
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
-                    <input type="text" name="name" id="name" class="form-control" #name>
+                    <input 
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        [(ngModel)]="ingredient.name">
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
-                    <input type="number" name="amount" id="amount" class="form-control" #amount>
+                    <input  
+                        type="number" 
+                        name="amount"
+                        class="form-control"
+                        [(ngModel)]="ingredient.amount">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12">
-                    <button type="button" class="btn btn-success" (click)="addIngredient()">Add</button>
+                    <button type="button" class="btn btn-success" type="submit">Add</button>
                     <button type="button" class="btn btn-danger">Delete</button>
                     <button type="button" class="btn btn-primary">Clear</button>
                 </div>
