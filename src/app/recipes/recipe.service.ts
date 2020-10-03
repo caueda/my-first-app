@@ -11,12 +11,12 @@ export class RecipeService {
           1,
           'A Test1 Recipe', 'This is simply a test1', 
           'http://loremflickr.com/150/150?random=1', 
-          [new Ingredient('Flour', 5)]),
+          [new Ingredient(4, 'Flour', 5)]),
         new Recipe(
           2,
           'A Test2 Recipe', 'This is simply a test2',
           'http://loremflickr.com/150/150?random=2',
-          [ new Ingredient('Bread',3), new Ingredient('Carrot', 2)])
+          [ new Ingredient(2, 'Bread',3), new Ingredient(3, 'Carrot', 2)])
       ];
 
       constructor(private shoppingListService: ShoppingListService){}
