@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xl-12">
-        <form (ngSubmit)="addIngredient(f)" #f="ngForm">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
             <div class="row">
                 <div class="col-sm-5 form-group">
                     <label for="name">Name</label>
@@ -8,7 +8,8 @@
                         type="text"
                         name="name"
                         class="form-control"
-                        [(ngModel)]="ingredient.name">
+                        [(ngModel)]="ingredient.name"
+                        required>
                 </div>
                 <div class="col-sm-2 form-group">
                     <label for="amount">Amount</label>
@@ -16,14 +17,22 @@
                         type="number" 
                         name="amount"
                         class="form-control"
-                        [(ngModel)]="ingredient.amount">
+                        [(ngModel)]="ingredient.amount"
+                        required
+                        pattern="^[1-9][1-9]*$">
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12">
-                    <button type="button" class="btn btn-success" type="submit">Add</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                    <button type="button" class="btn btn-primary">Clear</button>
+                    <button 
+                        class="btn btn-success" 
+                        type="submit"
+                        [disabled]="f.invalid">{{ (editMode) ? 'Update' : 'Add' }}</button>
+                    <button type="button" 
+                        class="btn btn-danger" 
+                        *ngIf="editMode"
+                        (click)="onDelete(ingredient.id)">Delete</button>
+                    <button type="button" class="btn btn-primary" (click)="onClear()">Clear</button>
                 </div>
             </div>
         </form>
