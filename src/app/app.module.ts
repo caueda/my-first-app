@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { RecipeService } from './recipes/recipe.service';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,12 +41,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RecipeEditComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, ShoppingListService, RecipeService],
+  providers: [HttpClientModule, UserService, ShoppingListService, RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
