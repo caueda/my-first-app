@@ -1,10 +1,12 @@
 import { Recipe } from './recipe.model';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { exhaustMap, map, take, tap } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
+import { User } from '../auth/user.model';
 
 @Injectable()
 export class RecipeService {
@@ -12,19 +14,32 @@ export class RecipeService {
       API_V1_RECIPE = 'http://localhost:8080/api/v1/recipes';
 
       recipeListChanged = new Subject<Recipe[]>();
-      public recipes: Recipe[] = [];
+      recipes: Recipe[] = [];
       recipeSelected = new Subject<Recipe>();
 
       constructor(private shoppingListService: ShoppingListService,
-                  private http: HttpClient){}
+                  private http: HttpClient,
+                  private authService: AuthService){}
 
       fetchData() {
-        return this.http.get<Recipe[]>(this.API_V1_RECIPE)
-        .pipe(
-          tap((recipes) => {
-            this.recipes = recipes;
-            this.recipeListChanged.next(this.getRecipes());
-          })
+        return this.authService.userSubject.pipe(
+          //take(1),
+          exhaustMap(user => {
+            if(!user) return [];
+            return this.http.get<Recipe[]>(this.API_V1_RECIPE);
+          }),
+          map(recipes => {
+            return recipes.map(recipe => {
+              return {
+                ...recipe,
+                ingredients: recipe.ingredients ? recipe.ingredients :  []
+              }
+            });
+          }),
+          tap(recipes => {
+              this.recipes = recipes;
+              this.recipeListChanged.next(this.recipes.slice());
+           })
         );
       }
 
