@@ -1,4 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RecipeService } from './recipes/recipe.service';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -32,13 +35,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ShoppingListComponent,
     ShoppingEditComponent,
     RecipeItemComponent,
+    AuthComponent,
     DropdownDirective,
     AppHighlightDirective,
     AppBetterHighlightDirective,
     UsersComponent,
     HomeComponent,
     RecipeStartComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     HttpClientModule,
@@ -47,7 +52,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [HttpClientModule, UserService, ShoppingListService, RecipeService],
+  providers: [
+    HttpClientModule, 
+    UserService, 
+    ShoppingListService, 
+    RecipeService, 
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
