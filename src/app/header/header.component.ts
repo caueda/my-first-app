@@ -31,5 +31,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authService.logout();
+    localStorage.removeItem('userData');
   }
 }
