@@ -1,4 +1,4 @@
-# Recipe Application
+# Recipe Application [![CircleCI](https://circleci.com/gh/caueda/angular-recipe-app.svg?style=svg)](https://circleci.com/gh/caueda/angular-recipe-app)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
 
